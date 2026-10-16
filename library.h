@@ -46,6 +46,9 @@ public:
     int getTotalBooks() const;
     int getAvailableBookCount() const;
     int getCheckedOutBookCount() const;
+
+    // Methode
+    bool doublonsPlusIntelligente(const string& titre, const string& auteur, const string& isbn) const;
 };
 
 #endif

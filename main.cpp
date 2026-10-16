@@ -104,11 +104,13 @@ int main(int argc, char* argv[]) {
         
         switch (choice) {
             case 1: { // Add Book
+            // Détection des doublons plus intelligente
+            // Verification de doublant pour : Ajouter livre (même titre, Auteur, ISBN)
                 string title = getInput("Entrez le titre du livre : ");
                 string author = getInput("Entrez l'auteur du livre : ");
                 string isbn = getInput("Entrez l'ISBN du livre : ");
                 
-                if (library.findBookByISBN(isbn)) {
+                if (library.doublonsPlusIntelligente(title, author, isbn)) {
                     cout << "Erreur : Un livre avec l'ISBN " << isbn << " existe déjà.\n";
                 } else {
                     Book newBook(title, author, isbn);
