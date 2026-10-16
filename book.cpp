@@ -1,13 +1,18 @@
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <filesystem>
+#include "book.h"
 #include "filemanager.h"
 
 using namespace std;
 
-// Constructor
+// Constructors
+Book::Book()
+    : title(""), author(""), isbn(""), isAvailable(true), borrowerId("") {}
+
 Book::Book(const string& title, const string& author, const string& isbn)
-    : title(title), author(author), isbn(isbn), isAvailable(isAvailable), borrowerId(borrowerId) {}
+    : title(title), author(author), isbn(isbn), isAvailable(true), borrowerId("") {}
 
 //Getters
 string Book::getTitle() const {
