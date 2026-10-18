@@ -11,6 +11,11 @@ FileManager::FileManager(const string& booksFile, const string& usersFile)
 
 // Save all library data
 bool FileManager::saveLibraryData(Library& library) {
+
+    if (booksFileName.empty() || usersFileName.empty()) {
+        return false;
+    }
+    
     return saveBooksToFile(library) && saveUsersToFile(library);
 }
 
