@@ -11,10 +11,14 @@ class FileManager {
 private:
     string booksFileName;
     string usersFileName;
+    string logFileName;
 
 public:
     // Constructor
-    FileManager(const string& booksFile, const string& usersFile);
+    FileManager(const string& booksFile, const string& usersFile, const string& logFile = "journal.log");
+    
+    // Journal d'activité
+    void logActivity(const string& action, const string& details);
     
     // File operations
     bool saveLibraryData(Library& library);

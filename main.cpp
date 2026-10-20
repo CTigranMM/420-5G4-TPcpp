@@ -70,6 +70,7 @@ int main(int argc, char* argv[]) {
 
     string booksFile;
     string usersFile;
+    string logFile = "journal.log";
     if (!dataDir.empty()) {
         if (!filesystem::is_directory(dataDir)) {
             cerr << "Erreur : le répertoire " << dataDir << " n'existe pas.\n";
@@ -78,10 +79,11 @@ int main(int argc, char* argv[]) {
         }
         booksFile = (filesystem::path(dataDir) / "books.txt").string();
         usersFile = (filesystem::path(dataDir) / "users.txt").string();
+        logFile = (filesystem::path(dataDir) / "journal.log").string();
     }
 
     Library library;
-    FileManager fileManager(booksFile, usersFile);
+    FileManager fileManager(booksFile, usersFile, logFile);
     
     // Load existing data
     cout << "Chargement des données de la bibliothèque...\n";
@@ -115,6 +117,7 @@ int main(int argc, char* argv[]) {
                 } else {
                     Book newBook(title, author, isbn);
                     library.addBook(newBook);
+                    fileManager.logActivity("AJOUT LIVRE", newBook.toFileFormat());
                     cout << "Livre ajouté avec succès !\n";
                 }
                 pauseForInput();
@@ -203,7 +206,14 @@ int main(int argc, char* argv[]) {
                 string isbn = getInput("Entrez l'ISBN du livre à emprunter : ");
                 string userId = getInput("Entrez l'ID de l'utilisateur : ");
                 
+                Book* book = library.findBookByISBN(isbn);
+                User* user = library.findUserById(userId);
+                string bookTitle = book ? book->getTitle() : "";
+                string bookAuthor = book ? book->getAuthor() : "";
+                string userName = user ? user->getName() : userId;
+
                 if (library.checkOutBook(isbn, userId)) {
+                    fileManager.logActivity("EMPRUNT", bookTitle + "|" + bookAuthor + "|" + isbn + "|0|" + userName);
                     cout << "Livre emprunté avec succès !\n";
                 } else {
                     cout << "Erreur : Impossible d'emprunter le livre. Vérifiez l'ISBN, l'ID utilisateur et la disponibilité du livre.\n";
@@ -214,8 +224,12 @@ int main(int argc, char* argv[]) {
             
             case 10: { // Return Book
                 string isbn = getInput("Entrez l'ISBN du livre à retourner : ");
+                Book* book = library.findBookByISBN(isbn);
+                string bookTitle = book ? book->getTitle() : "";
+                string bookAuthor = book ? book->getAuthor() : "";
                 
                 if (library.returnBook(isbn)) {
+                    fileManager.logActivity("RETOUR LIVRE", bookTitle + "|" + bookAuthor + "|" + isbn + "|1|");
                     cout << "Livre retourné avec succès !\n";
                 } else {
                     cout << "Erreur : Impossible de retourner le livre. Vérifiez l'ISBN et que le livre est bien emprunté.\n";
