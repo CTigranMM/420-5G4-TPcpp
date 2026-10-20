@@ -256,9 +256,20 @@ int Library::getCheckedOutBookCount() const { return getTotalBooks() - getAvaila
 //Search if doublon exact in the library
 // s'il exist alors exits == true Si non exits == false
 bool Library::doublonsPlusIntelligente(const string& titre, const string& auteur, const string& isbn) const {
+    string lowerTitre = titre;
+    transform(lowerTitre.begin(), lowerTitre.end(), lowerTitre.begin(), ::tolower);
+    string lowerAuteur = auteur;
+    transform(lowerAuteur.begin(), lowerAuteur.end(), lowerAuteur.begin(), ::tolower);
+
     for (const auto& book : books) {
         if (book->getISBN() == isbn) return true;
-        if (book->getTitle() == titre && book->getAuthor() == auteur) return true;
+
+        string bookTitre = book->getTitle();
+        transform(bookTitre.begin(), bookTitre.end(), bookTitre.begin(), ::tolower);
+        string bookAuteur = book->getAuthor();
+        transform(bookAuteur.begin(), bookAuteur.end(), bookAuteur.begin(), ::tolower);
+
+        if (bookTitre == lowerTitre && bookAuteur == lowerAuteur) return true;
     }
     return false;
 }

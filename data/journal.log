@@ -1,3 +1,24 @@
-2026-10-20 00:38:24 - [AJOUT LIVRE] TestLog|Tigo Gurt|12345|1|
-
-2026-10-20 01:58:01 - [AJOUT LIVRE] Tigo|Testlog4|1234|1|
+2026-10-18 00:38:24 - [AJOUT LIVRE] TestLog|Tigo Gurt|12345|1|
+2026-10-18 01:58:01 - [AJOUT LIVRE] Tigo|Testlog4|1234|1|
+2026-10-18 02:04:38 - [AJOUT LIVRE] Testlog5|Tigo|11111|1|
+2026-10-18 02:04:43 - [SAUVEGARDE] Sauvegarde créée
+2026-10-18 02:14:08 - [AJOUT LIVRE] testlog6|Tigo|22222|1|
+2026-10-18 02:15:59 - [AJOUT LIVRE] test7|Tigo|121212|1|
+2026-10-18 02:16:12 - [SAUVEGARDE] Données de la bibliothèque sauvegardées avec succès
+2026-10-18 02:16:49 - [SUPPRESSION] ISBN du livre supprimé : 121212
+2026-10-18 02:16:53 - [SAUVEGARDE] Sauvegarde créée
+2026-10-18 02:17:06 - [SAUVEGARDE] Données de la bibliothèque sauvegardées avec succès
+2026-10-18 02:17:29 - [SUPPRESSION] Essai de suppression : 121212
+2026-10-18 02:19:01 - [RECHERCHE] Titre recherché : Maximes
+2026-10-18 02:19:34 - [RECHERCHE] Auteur recherché : Montesquieu
+2026-10-18 02:19:44 - [AFFICHAGE] Tous les livres affichés
+2026-10-18 02:19:47 - [AFFICHAGE] Livres disponibles affichés
+2026-10-18 02:20:11 - [AJOUT] Utilisateur ajouté : 12345678
+2026-10-18 02:20:24 - [SAUVEGARDE] Données de la bibliothèque sauvegardées avec succès
+2026-10-18 02:20:33 - [AFFICHAGE] Tous les utilisateurs affichés
+2026-10-18 02:20:57 - [EMPRUNT] De l'esprit des lois|Montesquieu|9782070381018|0|Yo Gurt
+2026-10-18 02:20:57 - [EMPRUNT] Livre emprunté : 9782070381018 par l'utilisateur : 12345678
+2026-10-18 02:21:11 - [RETOUR LIVRE] De l'esprit des lois|Montesquieu|9782070381018|1|
+2026-10-18 02:21:11 - [RETOUR LIVRE] Livre retourné : 9782070381018
+2026-10-18 02:21:22 - [STATISTIQUES] Affichage des statistiques de la bibliothèque
+2026-10-18 02:21:27 - [SAUVEGARDE] Données de la bibliothèque sauvegardées avec succès

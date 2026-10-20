@@ -112,8 +112,10 @@ int main(int argc, char* argv[]) {
                 string author = getInput("Entrez l'auteur du livre : ");
                 string isbn = getInput("Entrez l'ISBN du livre : ");
                 
-                if (library.doublonsPlusIntelligente(title, author, isbn)) {
+                if (library.findBookByISBN(isbn)) {
                     cout << "Erreur : Un livre avec l'ISBN " << isbn << " existe déjà.\n";
+                } else if (library.doublonsPlusIntelligente(title, author, isbn)) {
+                    cout << "Erreur : Un livre avec le même titre et auteur existe déjà (\"" << title << "\" par " << author << ").\n";
                 } else {
                     Book newBook(title, author, isbn);
                     library.addBook(newBook);
