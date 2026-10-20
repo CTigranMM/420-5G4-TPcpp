@@ -180,6 +180,7 @@ void Library::displayAllBooks() {
         return;
     }
 
+    // Erreur de commit
     // Tri STL par titre puis auteur
     sort(allBooks.begin(), allBooks.end(), [](const Book* a, const Book* b) {
         bool res;
